@@ -1,30 +1,25 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دستیار شخصی</title>
-    <link rel="stylesheet" href="./style.css"/>
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/note.css"/>
+    <link rel="stylesheet" href="css/panels.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="css/search.css"/>
+    <link rel="stylesheet" href="css/calendar.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/calendar.js" defer></script>
+    <script src="js/search.js" defer></script>
+    <script src="js/popupCalendar.js" defer></script>
+
 </head>
 <body>
     <main class="container">
-
         <section class="panel panel-left">
-            <section class="widget weather-widget"></section>
-            <section class="widget calendar-widget"></section>
-        </section>
-
-        <section class="panel-center">
-            <header class="widget search-bar"></header>
-            <input type="text" id="search-input" placeholder="جستجو...">
-            <button onclick="search()">جستجو</button>
-            <section class="tiles">
-
-            </section>
-        </section>
-
-        <section class="panel panel-right">
             <header class="notes-header">
                 <h2>یادداشت‌های عمومی</h2>
             </header>
@@ -36,9 +31,48 @@
             <section class="add-note">
                 <div class="note-inputs">
                     <input placeholder="  تسک جدید" id="noteTitle"></input>
-                    <textarea placeholder="  ...توضیحات " id="noteContent"></textarea>
+                    <textarea placeholder="  توضیحات ... " id="noteContent"></textarea>
                 </div>
-                <button class="add-note-button" onclick="addNote()">افزودن یادداشت</button>
+                <div class="new-note-buttons">
+                    <button class="add-note-button" >افزودن یادداشت</button>
+                    <button class="button-style add-note-date"  id="calendarButton"><i class="fa fa-calendar"></i></button>
+                </div>
+            </section>
+        </section>
+
+        <section class="panel-center">
+            <header class="search-bar">
+              <div class="search-input-wrapper">
+                <input type="text" id="searchInput" placeholder="جستجو در گوگل">
+                <button class="button-style search-button" >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </header>
+            <section class="tiles">
+
+            </section>
+        </section>
+        <section class="panel panel-right">
+            <section class="widget calendar-widget">
+              <div class="calendar-header">
+                <div class="month">
+                    <button class="calendar-nav-btn" id="prevMonth">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h4 id="calendarTitle">Month Year</h4>
+                    <button class="calendar-nav-btn" id="nextMonth" >
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <button id="goTodayButton" class="today-button">
+                امروز
+              </button>
+              </div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="date-task" id="dateTaskSection">
+                    <div id="eventList"></div>
+                </div>
             </section>
         </section>
 
@@ -46,15 +80,45 @@
     <!-- template is a hidden tag in html which can be cloned -->
     <template id="noteTemplate"> 
       <div class="note">
-        <h3 class="note-title"></h3>
-        <p class="note-content"></p>
-
+        <div class="note-text">
+            <h4 class="note-title"></h4>
+            <p class="note-content"></p>
+        </div>
         <div class="note-actions">
-          <button class="edit-note">ویرایش</button>
-          <button class="delete-note">حذف</button>
+            <button class="button-style edit-note"><i class="fas fa-edit"></i></button>
+            <button class="button-style delete-note"><i class="fas fa-trash"></i></button>
         </div>
       </div>
     </template>
+<div class="modal" id="calendarModal">
+  <div class="modal-content">
+    <h3>انتخاب تاریخ</h3>
+    <div class="calendar-header">
+      <button class="calendar-nav-btn"  id="prevPopupMonth">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <h4 id="popupCalendarTitle">Month Year</h4>
+      <button class="calendar-nav-btn" id="nextPopupMonth">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="calendar-grid" id="popupCalendarGrid"></div>
+  </div>
+</div>
+
+<div class="modal" id="addTileModal">
+  <div class="modal-content">
+    <h3>افزودن دسترسی سریع جدید</h3>
+    <div class="tile-form">
+      <input type="text" id="tileName" placeholder="نام وبسایت (مثل: یوتیوب)" />
+      <input type="url" id="tileUrl" placeholder="آدرس وبسایت (مثل: https://youtube.com)" />
+      <div class="tile-form-buttons">
+        <button class="add-note-button" id="saveTileButton" >افزودن</button>
+        <button class="cancel-button">لغو</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

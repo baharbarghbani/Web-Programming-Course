@@ -1,0 +1,22 @@
+.panel {
+  background: var(--panel-color);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-left{
+  padding: 16px;
+  max-height: 80vh;
+  min-height: 64vh;
+ justify-content: space-between;
+}
+
+.panel-right {
+    padding: 16px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+}

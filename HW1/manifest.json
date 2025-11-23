@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Dastyar Clone",
+  "version": "1.0",
+  "description": "search, notes, and calendar",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"]
+}
