@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دستیار شخصی</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+
+        <section class="panel panel-left">
+            <section class="widget weather-widget"></section>
+            <section class="widget calendar-widget"></section>
+        </section>
+
+        <section class="panel-center">
+            <header class="widget search-bar"></header>
+            <input type="text" id="search-input" placeholder="جستجو...">
+            <button onclick="search()">جستجو</button>
+            <section class="tiles">
+
+            </section>
+        </section>
+
+        <section class="panel panel-right">
+            <header class="notes-header">
+                <h2>یادداشت‌های عمومی</h2>
+            </header>
+
+            <section class="notes-list" id="notesList">
+
+            </section>
+
+            <section class="add-note">
+                <div class="note-inputs">
+                    <input placeholder="  تسک جدید" id="noteTitle"></input>
+                    <textarea placeholder="  ...توضیحات " id="noteContent"></textarea>
+                </div>
+                <button class="add-note-button" onclick="addNote()">افزودن یادداشت</button>
+            </section>
+        </section>
+
+    </main>
+    <!-- template is a hidden tag in html which can be cloned -->
+    <template id="noteTemplate"> 
+      <div class="note">
+        <h3 class="note-title"></h3>
+        <p class="note-content"></p>
+
+        <div class="note-actions">
+          <button class="edit-note">ویرایش</button>
+          <button class="delete-note">حذف</button>
+        </div>
+      </div>
+    </template>
+
+</body>
+</html>
